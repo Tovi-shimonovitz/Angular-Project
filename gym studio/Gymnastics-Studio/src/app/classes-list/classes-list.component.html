@@ -1,0 +1,14 @@
+<div class="classes-container">
+  <h1>רשימת שיעורים</h1>
+  
+  <div class="classes-gallery">
+    <app-single-class 
+      *ngFor="let cls of classes"
+      [classData]="cls">
+    </app-single-class>
+  </div>
+
+  <div *ngIf="classes.length === 0" class="no-classes">
+    <p>אין שיעורים להצגה</p>
+  </div>
+</div>
