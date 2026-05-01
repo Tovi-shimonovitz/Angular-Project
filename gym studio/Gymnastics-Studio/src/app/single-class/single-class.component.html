@@ -1,4 +1,4 @@
-<div class="class-card">
+<div class="class-card" [ngClass]="{ 'started-class': isClassStarted() }">
   <div class="card-header">
     <h3 class="class-name">{{ classData.name }}</h3>
   </div>
@@ -35,7 +35,7 @@
     </div>
   </div>
   
-  <div class="card-footer">
+  <div class="card-footer" *ngIf="!isClassStarted()">
     <button class="btn-register">הרשם לשיעור</button>
   </div>
 </div>

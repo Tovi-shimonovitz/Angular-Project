@@ -84,3 +84,15 @@
 .btn-register:active {
   transform: scale(0.98);
 }
+
+/* סגנון לשיעורים שכבר התחילו */
+.class-card.started-class {
+  background: linear-gradient(135deg, #F5F3FF 0%, #EDE9FE 100%);
+  border: 2px solid #8B5CF6;
+  opacity: 1;
+}
+
+.class-card.started-class .card-header {
+  background: linear-gradient(135deg, #8B5CF6 0%, #6D28D9 100%);
+  border-bottom: 3px solid #7C3AED;
+}

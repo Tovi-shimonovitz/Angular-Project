@@ -21,4 +21,8 @@ interface Class {
 })
 export class SingleClassComponent {
   @Input() classData!: Class;
+
+  isClassStarted(): boolean {
+    return new Date(this.classData.startDate) <= new Date();
+  }
 }

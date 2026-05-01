@@ -28,7 +28,7 @@ export class ClassesListComponent {
       name: 'התעמלות קלאסית',
       instructor: 'Chaim Levi',
       numberOfSessions: 12,
-      startDate: '2026-01-10',
+      startDate: '2026-04-15',
       price: 450,
       day: 'ראשון',
       time: '10:00 - 11:00'
@@ -38,7 +38,7 @@ export class ClassesListComponent {
       name: 'התעמלות אמנותית',
       instructor: 'Mordechai Cohen',
       numberOfSessions: 10,
-      startDate: '2026-01-15',
+      startDate: '2026-04-22',
       price: 500,
       day: 'שלישי',
       time: '16:00 - 17:00'
@@ -48,7 +48,7 @@ export class ClassesListComponent {
       name: 'התעמלות ילדים',
       instructor: 'Yosef Mizrahi',
       numberOfSessions: 15,
-      startDate: '2026-01-20',
+      startDate: '2026-05-10',
       price: 400,
       day: 'שני',
       time: '15:00 - 16:00'
@@ -58,7 +58,7 @@ export class ClassesListComponent {
       name: 'התעמלות מתקדמות',
       instructor: 'Chaim Levi',
       numberOfSessions: 8,
-      startDate: '2026-02-01',
+      startDate: '2026-05-20',
       price: 600,
       day: 'רביעי',
       time: '18:00 - 19:30'
@@ -68,7 +68,7 @@ export class ClassesListComponent {
       name: 'התעמלות קרקע',
       instructor: 'Yitzhak Goldberg',
       numberOfSessions: 12,
-      startDate: '2026-02-05',
+      startDate: '2026-06-05',
       price: 480,
       day: 'חמישי',
       time: '17:00 - 18:00'
