@@ -9,7 +9,7 @@
         
         <mat-form-field appearance="outline">
           <mat-label>שם משתמש</mat-label>
-          <input matInput formControlName="userName" placeholder="הקלידי שם משתמש">
+          <input matInput formControlName="userName"  placeholder="הקלידי שם משתמש">
           @if (loginForm.get('userName')?.invalid && loginForm.get('userName')?.touched) {
             <mat-error>שם משתמש חובה (לפחות 3 תווים)</mat-error>
           }
@@ -17,7 +17,7 @@
 
         <mat-form-field appearance="outline">
           <mat-label>סיסמה</mat-label>
-          <input matInput type="password" formControlName="password" placeholder="הקלידי סיסמה" (input)="onPasswordInput()">
+          <input matInput type="password"  formControlName="password" placeholder="הקלידי סיסמה" (input)="onPasswordInput()">
           @if (loginForm.get('password')?.hasError('required') && loginForm.get('password')?.touched) {
             <mat-error>סיסמה חובה</mat-error>
           }
@@ -32,7 +32,7 @@
         <button mat-raised-button color="primary" type="submit" [disabled]="loginForm.invalid">
           התחברות
         </button>
-            <span *ngIf="!isExists">Name or password is wrong</span>
+            <span *ngIf="!isExists" class="error-message">Name or password is wrong</span>
       </form>
     </mat-card-content>
   </mat-card>

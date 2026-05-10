@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RegistrantService } from '../registrant.service';
 
 interface Class {
   id: number;
@@ -25,4 +26,13 @@ export class SingleClassComponent {
   isClassStarted(): boolean {
     return new Date(this.classData.startDate) <= new Date();
   }
+  constructor(public registrantService: RegistrantService) {}
+countByClass(name: string): number {
+  return this.registrantService.getCountByClass(name);
+}
+// count = 0;
+
+// ngOnInit() {
+//   this.count = this.registrantService.getCountByClass(this.classData.name);
+// }
 }

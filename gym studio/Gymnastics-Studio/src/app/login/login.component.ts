@@ -24,14 +24,13 @@ interface User {
     MatCardModule, MatFormFieldModule, NgIf],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
-}) 
+})
 
 export class LoginComponent {
 
   userList: User[];
   isExists: boolean = true;
-  name: string = '';
-  password: string = '';
+
   loginForm = new FormGroup({
     userName: new FormControl('', [Validators.required, Validators.minLength(3)]),
     password: new FormControl('', [Validators.required, Validators.minLength(6), Validators.pattern('^[0-9]*$')])
@@ -39,7 +38,6 @@ export class LoginComponent {
   constructor(private userService: UsersService, private router: Router) {
     this.userList = this.userService.getUserDetailes();
   }
-
   onPasswordInput(): void {
     const passwordControl = this.loginForm.get('password');
     if (passwordControl?.value) {
@@ -48,16 +46,22 @@ export class LoginComponent {
   }
 
   onSubmit() {
-    this.name = this.loginForm.get('userName')?.value || '';
-    this.password = this.loginForm.get('password')?.value || '';
+    const formValue = this.loginForm.value;
 
-    const foundUser = this.userList.find((user: User) => 
-      user.userName.toLowerCase() === this.name.toLowerCase() && user.password === this.password
+    const foundUser = this.userList.find((user: User) =>
+      user.userName.toLowerCase() === formValue.userName?.toLowerCase()
+      &&
+      user.password === formValue.password
     );
 
+
+
+
     if (foundUser) {
+      localStorage.setItem('userRole', foundUser.role);
       this.isExists = true;
       if (foundUser.role === 'Gymnastics Coach') {
+
         this.router.navigate(['/classes']);
       } else if (foundUser.role === 'Registration Clerk') {
         this.router.navigate(['/registered-students']);

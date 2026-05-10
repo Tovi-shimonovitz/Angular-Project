@@ -1,12 +1,111 @@
-.example-form {
-  min-width: 150px;
-  max-width: 500px;
+:host {
+  display: block;
+}
+
+.login-wrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+mat-card {
+  width: min(450px, 100%);
+  padding: 32px 28px;
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+  background: #f8f9fa;
+}
+
+mat-card-header {
+  padding-bottom: 20px;
+  text-align: center;
+}
+
+mat-card-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #333;
+  margin: 0;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+mat-form-field {
   width: 100%;
 }
 
-.example-full-width {
+button[mat-raised-button] {
   width: 100%;
+  padding: 14px 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  transition: transform 0.2s ease;
 }
-button {
-  margin-right: 8px;
+
+button[mat-raised-button]:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+}
+
+button[mat-raised-button]:disabled {
+  background: #ccc;
+  color: #666;
+}
+
+.error-message {
+  display: block;
+  margin-top: 16px;
+  padding: 12px 16px;
+  background: linear-gradient(135deg, #ff6b6b 0%, #ee5a52 100%);
+  color: white;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 0.95rem;
+  box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+  animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+::ng-deep .mat-mdc-input-element {
+  background-color: #b3d9ff !important;
+  border-radius: 8px;
+  padding: 8px 12px;
+}
+
+::ng-deep .mat-form-field-label {
+  color: #666;
+}
+
+::ng-deep .mat-form-field.mat-focused .mat-form-field-label {
+  color: #667eea;
+}
+
+::ng-deep .mat-form-field.mat-focused .mat-form-field-outline-thick {
+  border-color: #667eea;
+}
+
+input.ng-invalid.ng-touched {
+  border: 2px solid #ff6b6b;
+}
+
+@media (max-width: 500px) {
+  mat-card {
+    padding: 24px 20px;
+  }
 }

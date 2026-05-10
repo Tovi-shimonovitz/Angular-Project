@@ -64,7 +64,20 @@
   border-top: 1px solid #f0f0f0;
   text-align: center;
 }
-
+.full-class{
+   display: inline-block;
+  margin-top: 12px;
+  padding: 6px 14px;
+  background: linear-gradient(135deg, #8B5CF6 0%, #6366F1 100%);
+  color: white;
+  font-weight: 600;
+  font-size: 13px;
+  border-radius: 5px;
+  border-color: #333;
+  text-align: center;
+  box-shadow: 0 3px 8px rgba(99, 102, 241, 0.25);
+  letter-spacing: 0.3px;
+}
 .btn-register {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;

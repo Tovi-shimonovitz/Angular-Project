@@ -1,1 +1,111 @@
-<p>registered-students works!</p>
+<div class="actions-bar">
+  <button class="btn-add" (click)="openAddModal()">
+    + נרשמת חדשה
+  </button>
+</div>
+<div class="registered-students-container">
+  <div class="header">
+    <h1>רשימת הנרשמות</h1>
+  </div>
+
+  <div class="grid-wrapper">
+    <ag-grid-angular style="width: 100%; height: 620px;" class="ag-theme-quartz-dark" [rowData]="registrants"
+      [columnDefs]="columnDefs" [gridOptions]="gridOptions" [rowHeight]="40" [context]="context" [headerHeight]="50"
+      (gridReady)="onGridReady($event)">
+    </ag-grid-angular>
+  </div>
+</div>
+
+<!-- Modal for registrant details -->
+<div class="modal" [class.open]="isModalOpen">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2>פרטי הנרשמת</h2>
+      <button class="close-btn" (click)="closeModal()">×</button>
+    </div>
+
+    <div class="modal-body" *ngIf="selectedRegistrant">
+      <div class="detail-row">
+        <span class="label">שם:</span>
+        <span class="value">{{ selectedRegistrant.firstName }}</span>
+      </div>
+      <div class="detail-row">
+        <span class="label">משפחה:</span>
+        <span class="value">{{ selectedRegistrant.lastName }}</span>
+      </div>
+      <div class="detail-row">
+        <span class="label">טלפון:</span>
+        <span class="value">{{ selectedRegistrant.phone }}</span>
+      </div>
+      <div class="detail-row">
+        <span class="label">מספר זהות:</span>
+        <span class="value">{{ selectedRegistrant.idNumber }}</span>
+      </div>
+      <div class="detail-row">
+        <span class="label">שיעור:</span>
+        <span class="value">{{ selectedRegistrant.class }}</span>
+      </div>
+      <div class="detail-row">
+        <span class="label">מחיר:</span>
+        <span class="value">₪{{ selectedRegistrant.price }}</span>
+      </div>
+      <div class="detail-row">
+        <span class="label">תשלום:</span>
+        <span class="value" [class.paid]="selectedRegistrant.isPaid" [class.unpaid]="!selectedRegistrant.isPaid">
+          {{ selectedRegistrant.isPaid ? 'שולם' : 'טרם שולם' }}
+        </span>
+      </div>
+    </div>
+
+    <div class="modal-footer">
+      <button class="btn-close" (click)="closeModal()">סגור</button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal overlay -->
+<div class="modal-overlay" [class.open]="isModalOpen" (click)="closeModal()"></div>
+<div class="modal" [class.open]="isAddModalOpen">
+  <div class="modal-content">
+
+    <div class="modal-header">
+      <h2>נרשמת חדשה</h2>
+      <button class="close-btn" (click)="closeAddModal()">×</button>
+    </div>
+
+    <div class="modal-body">
+
+      <input placeholder="שם פרטי" [(ngModel)]="newRegistrant.firstName">
+      <input placeholder="שם משפחה" [(ngModel)]="newRegistrant.lastName">
+      <input placeholder="טלפון" [(ngModel)]="newRegistrant.phone">
+      <input placeholder="תעודת זהות" [(ngModel)]="newRegistrant.idNumber">
+      <label>שיעור</label>
+      <select [(ngModel)]="selectedClass" (change)="onClassChange()">
+
+        <option [ngValue]="null">בחר שיעור</option>
+
+        <option *ngFor="let c of classes" [ngValue]="c">
+          {{ c.name }} 
+        </option>
+
+      </select>
+      <input placeholder="מחיר" type="number" [(ngModel)]="newRegistrant.price" readonly>
+
+      <label>
+        <input type="checkbox" [(ngModel)]="newRegistrant.isPaid">
+        שולם
+      </label>
+
+    </div>
+
+    <div class="modal-footer">
+      <button class="btn-close" (click)="addNewRegistrant()">
+        שמור
+      </button>
+    </div>
+
+  </div>
+</div>
+
+<div class="modal-overlay" [class.open]="isAddModalOpen" (click)="closeAddModal()">
+</div>
